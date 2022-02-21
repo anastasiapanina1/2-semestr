@@ -1,0 +1,78 @@
+1)#include <iostream>
+
+int main(){
+    int a = 0;
+    int b = 0;
+    char operation;
+    std::cout << "Enter 1 number: ";
+    std::cin >> a;
+    std::cout << "Enter 2 number: ";
+    std::cin >> b;
+    std::cout << "Enter operation symbol: ";
+    std::cin >> operation;
+   
+    switch (operation){
+    case '+':
+        std::cout << "a + b = " << a + b << '\n';
+        break;
+    case '-':
+        std::cout << "a - b = " << a - b <<'\n';
+        break;
+    case '*':
+        std::cout << "a * b = " << a * b << '\n';
+        break;
+    case '/':
+        std::cout << "a / b = " << a / b << '\n';
+        break;
+    default:
+        std::cout << "Error\n";
+    }
+    return 0;
+}
+
+2)#include <iostream>
+#include "windows.h"
+
+using namespace std;
+
+int main(){
+    cout << "enter n";
+    int n = 0;
+    cin >> n;
+    while (n>0)
+    {
+        cout << n << " ";
+        Sleep(1000);
+        n--;
+    }
+}
+
+3)#include <iostream>
+#include "windows.h"
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+
+    int k = 1;
+
+    while (k <= 150) {
+
+        string apple == "яблок";
+
+        if (k == 1 || k % 10 == 1) {
+            apple += "о";
+        }
+        if ((k > 1 && k < 5) || (k % 10 > 1 && k % 10 < 5)) {
+            apple += "а";
+        }
+
+        if ((k >= 5 && k < 10) || (k % 10 >= 5 && k % 10 < 10) || (k % 100 > 10 && k % 100 < 15)) {
+            apple == "яблок";
+        }
+
+        cout << k << ' ' << apple << endl;
+        k++;
+    }
+}
