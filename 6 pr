@@ -1,0 +1,60 @@
+1. #include <iostream>
+using namespace std;
+int main()
+{
+    char ch = 0;
+    char f = 0;
+    cout << "      0     1     2     3     4     5     6     7     8     9     A     B     C     D     E     F" << endl;
+    for(int i = 1; i<16; i++){
+        ch = i + 55;
+        if (i<10)
+            cout << i << "     ";
+        else
+            cout << ch << "     ";
+        for(int j = 0; j<16; j++){
+            f = i*16 + j;
+            cout << f;
+            if(f/100 == 0){
+                    cout << "     ";
+                }
+            else{
+                cout << "     ";
+            }
+        }
+        cout << endl;
+    }
+}
+
+2. #include <iostream>
+using namespace std;
+
+int main(int argc, char** argv) {
+  stack<double> s;  stack< pair<int, char> > ops;
+ 
+  auto p = [&s, &ops] (function<double (double, double)>& f)
+    {double r=s.top();s.pop();r=f(s.top(),r);s.pop();s.push(r);ops.pop();};
+ 
+  map< char, pair< int, function<double (double, double)> > > m =
+    {{'+', {1, [](double a, double b){return a+b;}}},{'-', {1, [](double a, double b){return a-b;}}},
+     {'*', {2, [](double a, double b){return a*b;}}},{'/', {2, [](double a, double b){return a/b;}}}};
+ 
+  const int order = 2; int level = 0;
+  for (char* sp = argv[1];; ++sp) {
+    while (*sp == '(') {level += order; ++sp;}
+ 
+    s.push(strtod(sp, &sp));
+ 
+    while (*sp == ')') {level -= order; ++sp;}
+ 
+    if (!*sp) {while(!ops.empty()) p(m[ops.top().second].second); break;}
+ 
+    const int op =  m[*sp].first + level;
+    while (!ops.empty() && ops.top().first >= op) p(m[ops.top().second].second);
+ 
+    ops.push(make_pair(op, *sp));
+  }
+ 
+  cout << s.top() << endl;
+  return 0;
+}
+3. 
